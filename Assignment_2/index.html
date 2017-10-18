@@ -10,58 +10,164 @@
 </head>
 
 <body>
-    <div class="">
-        <form>
-            <label for="firstname">First Name</label>
-            <input id="firstname" type="text" pattern="[a-zA-Z]">
-            <span id="firstnamevm" style="font-style:italic; color:red"></span>
-            <br>
-            <br>
-            <label for="lastname">Last Name</label>
-            <input id="lastname" type="text">
-            <p id="lastnamevm"></p>
-            <br>
-            <br>
-            <label for="dateofbirth">Date Of Birth</label>
-            <input id="dateofbirth" type="date">
-            <br>
-            <br>
-            <label for="email">Email ID</label>
-            <input id="email" type="email">
-            <p id="emailvm"></p>
-            <br>
-            <br>
-            <label for="mobilenumber">Mobile Number</label>
-            <input id="mobilenumber" type="number">
-            <p id="mobilenumbervm"></p>
-            <br>
-            <br>
-            <label>Gender</label>
-            <input id="male" type="radio" name="gender" value="male">
-            <label for="male">Male</label>
-            <input id="famale" type="radio" name="gender" value="female">
-            <label for="female">Female</label>
-            <input id="other" type="radio" name="gender" value="other">
-            <label for="other">Other</label>
-            <br>
-            <br>
-            <label for="userid">User ID</label>
-            <input id="userid" type="text">
-            <p id="useridvm"></p>
-            <br>
-            <br>
-            <label for="password">Password</label>
-            <input id="password" type="password">
-            <p id="passwordvm"></p>
-            <br>
-            <br>
-            <button type="submit" onclick="myFunction()">Submit</button>
-        </form>
-    </div>
+    <center>
+        <div>
+            <form>
+                <table>
+                    <tr>
+                        <td>
+                            <label for="firstname">First Name</label>
+                        </td>
+                        <td>
+                            <input id="firstname" type="text" pattern="[a-zA-Z]+">
+                        </td>
+                        <td>
+                            <span id="firstnamevm" style="font-style:italic; color:red"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="lastname">Last Name</label>
+
+                        </td>
+                        <td>
+                            <input id="lastname" type="text" pattern="[a-zA-Z]">
+
+                        </td>
+                        <td>
+                            <span id="lastnamevm" style="font-style:italic; color:red"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="dateofbirth">Date Of Birth</label>
+
+                        </td>
+                        <td>
+                            <input id="dateofbirth" type="date">
+                        </td>
+                        <td>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="email">Email ID</label>
+
+                        </td>
+                        <td>
+                            <input id="email" type="email">
+
+                        </td>
+                        <td>
+                            <span id="emailvm" style="font-style:italic; color:red"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="mobilenumber">Mobile Number</label>
+
+                        </td>
+                        <td>
+                            <input id="mobilenumber" type="number" pattern="[0-9]{1,10}">
+
+                        </td>
+                        <td>
+                            <span id="mobilenumbervm" style="font-style:italic; color:red"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Gender</label>
+                        </td>
+                        <td>
+                            <input id="male" type="radio" name="gender" value="male">
+                            <label for="male">Male</label>
+                            <input id="famale" type="radio" name="gender" value="female">
+                            <label for="female">Female</label>
+                            <input id="other" type="radio" name="gender" value="other">
+                            <label for="other">Other</label>
+                        </td>
+                        <td>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="userid">User ID</label>
+                        </td>
+                        <td>
+                            <input id="userid" type="text">
+                        </td>
+                        <td>
+                            <span id="useridvm" style="font-style:italic; color:red"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="password">Password</label>
+
+                        </td>
+                        <td>
+                            <input id="password" type="password">
+
+                        </td>
+                        <td>
+                            <span id="passwordvm" style="font-style:italic; color:red"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+
+                        </td>
+                        <td>
+                            <button type="submit" onclick="myFunction()">Submit</button>
+                        </td>
+                        <td>
+
+                        </td>
+                    </tr>
+                </table>
+
+            </form>
+        </div>
+    </center>
+
 
     <script>
         function validateForm() {
 
+            var firstname = document.getElementById("firstname");
+            var lastname = document.getElementById("lastname");
+            var email = document.getElementById("email");
+            var mobilenumber = document.getElementById("mobilenumber");
+            var userid = document.getElementById("userid");
+            var password = document.getElementById("password");
+
+
+            if (firstname.checkValidity() == false || firstname.value == "") {
+                return false;
+            }
+
+            if (lastname.checkValidity() == false || lastname.value == "") {
+                return false;
+            }
+
+            if (email.checkValidity() == false || email.value == "") {
+                return false;
+            }
+
+            if (mobilenumber.checkValidity() == false || mobilenumber.value == "") {
+                return false;
+            }
+
+            if (userid.checkValidity() == false || userid.value == "") {
+                return false;
+            }
+
+            if (password.checkValidity() == false || password.value == "") {
+                return false;
+            }
         }
         function myFunction() {
             var firstname = document.getElementById("firstname");
@@ -70,9 +176,30 @@
             var mobilenumber = document.getElementById("mobilenumber");
             var userid = document.getElementById("userid");
             var password = document.getElementById("password");
-            
+
             if (firstname.checkValidity() == false || firstname.value == "") {
                 document.getElementById("firstnamevm").innerHTML = "Only alphabets are allowed";
+                firstname.match
+            }
+
+            if (lastname.checkValidity() == false || lastname.value == "") {
+                document.getElementById("lastnamevm").innerHTML = "Only alphabets are allowed";
+            }
+
+            if (email.checkValidity() == false || email.value == "") {
+                document.getElementById("emailvm").innerHTML = "Not valid Email";
+            }
+
+            if (mobilenumber.checkValidity() == false || mobilenumber.value == "") {
+                document.getElementById("mobilenumbervm").innerHTML = "Only numbers are allowed MAX 10 digits";
+            }
+
+            if (userid.checkValidity() == false || userid.value == "") {
+                document.getElementById("useridvm").innerHTML = "Required Field";
+            }
+
+            if (password.checkValidity() == false || password.value == "") {
+                document.getElementById("passwordvm").innerHTML = "Required Field";
             }
         }
     </script>
