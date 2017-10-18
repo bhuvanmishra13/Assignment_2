@@ -1,0 +1,248 @@
+<html>
+<head>
+ <title>JavaScript Assignment 1</title>
+</head>
+<body>
+<form id="myForm" method="POST" action="Assign_2_out.php" >
+	<center >
+<table >
+	<tr>
+		<td>First Name  </td> 
+				<td>
+		 		<input name="fname" type="text"  onchange ="validateFname()"> 
+		 		</td> 
+		 		<td>
+		         <p id="p1" style="color:red;font-style:italic;font-size:14px"> </p>
+		        </td>
+    </tr>
+	<tr>
+		<td> Last Name  </td>   
+				<td>		
+				<input name="lname" type="text"  onchange ="validateLname()" > 
+				</td>
+				<td>
+				<p id="p2" style="color:red;font-style:italic;font-size:14px"> </p>
+				</td>
+    </tr>
+    <tr>
+		<td> Date Of Birth </td>
+				<td>		
+				<input name="dob"   type="date">
+				</td>
+				 <td> 
+				 <p></p>
+				</td>
+	</tr>
+	<tr>
+
+ 		<td> Email ID	</td>   	
+				<td>
+				 <input name="email" type="email" onchange="validateEmail()" >
+				 </td>
+				 <td>
+				 <p id="p3" style="color:red;font-style:italic;font-size:14px"> </p>
+				 </td>
+	</tr>
+	<tr>
+		<td> Mobile Number</td>
+				<td>
+				<input name="mobile" type="text" onchange="validateMobile()"  max="10">
+				 </td>
+				 <td>
+ 			   	<p id="p4" style="color:red;font-style:italic;font-size:14px"> </p>
+ 			   	 </td>
+ 	</tr>
+ 	<tr>
+
+ 		<td>Gender</td>        	
+			 	<td>	
+			 	<input type="radio" name="egender" value="male" checked>Male
+			  	<input type="radio" name="egender" value="female">Female
+			    <input type="radio" name="egender" value="other">Other
+			 	</td>
+			 	<td>
+			 	<p><p>
+				 </td>
+	</tr>
+	<tr>
+		<td> User ID</td>
+			<td>
+	 		<input name="userid" type="text"  onchange ="validateUserid()"> 
+	 		</td>
+ 			<td>
+ 			<p id="p5" style="color:red;font-style:italic;font-size:14px"> </p>
+ 			</td>
+ 	</tr>
+ 	<tr>
+ 		<td> Password</td>
+ 		<td>
+ 		<input name="pass" type="text"  onchange="validatePass()"> 
+ 		</td>
+ 		<td>
+ 		<p id="p6" style="color:red;font-style:italic;font-size:14px"> </p>
+ 		</td>
+ 	</tr>
+ 	<tr>
+ 		<td></td>
+ 			<td>
+ 			<input type ="button" value="Submit"  onClick="validateInput()">
+ 			</td>
+ 			<td></td>
+ 	</tr>
+
+
+
+ </table>
+</center>
+  <p id="Output"  style="color:red;font-style:italic;font-size:20px"></p>
+</form>
+<script>
+function validatePass(){
+	console.log("Inside Pass");
+  var pass =document.forms["myForm"]["pass"].value;
+  var regex1 = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,8}$/;
+ 
+  if(!regex1.test(pass) ){
+		
+		document.getElementById("p6").innerHTML ="Password should 6 to 20 caracters long ,<br> And require atlist one small letter,<br>one Capital letter and one Number";
+         return false;
+	}
+	else{
+		
+         document.getElementById("p5").style.display='none';
+		return true;
+		
+
+}
+}
+function validateUserid(){
+var regex = /^[a-zA-Z0-9.]/i;
+var userid=document.forms["myForm"]["userid"].value;
+if(userid.match(regex) ){
+				document.getElementById("p5").innerHTML="Only Numbers are allowed";
+				return false;
+			}
+			else{
+				document.getElementById("p5").style.display='none';
+				return true;
+			}
+
+}
+function validateMobile(){
+	var regex = /^[0-9]/i;
+	var mobile=document.forms["myForm"]["mobile"].value;
+	
+		if(!mobile.match(regex) ||  mobile.length>10 ){
+				document.getElementById("p4").innerHTML="Only Numbers are allowed MAX 10 digits";
+				return false;
+			}
+			else{
+				document.getElementById("p3").style.display='none';
+				return true;
+			}
+
+}
+
+function validateEmail(){
+	var x = document.forms["myForm"]["email"].value;
+    var atpos = x.indexOf("@");
+    var dotpos = x.lastIndexOf(".");
+    if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length) {
+        document.getElementById("p3").innerHTML="Not valid Email.";
+        return false;
+    }
+    else{
+    	document.getElementById("p3").style.display='none';
+		return true;
+    }
+}
+
+function validateFname(){
+	console.log("Inside Validate Fname");
+	var regex = /^[a-zA-Z]/i; // regular expretion for only alphabates
+	var fname =document.forms["myForm"]["fname"].value;
+
+
+	if(!fname.match(regex)){
+		document.getElementById("p1").innerHTML="Only alphabets are allowed";
+		return false;
+	}
+	else{
+		document.getElementById("p1").style.display='none';
+		return true;
+	}
+	
+         
+	} 
+
+function validateLname(){
+	
+	var regex = /^[a-zA-Z]/i; // regular expretion for only alphabates
+	var lname =document.forms["myForm"]["lname"].value;
+
+
+	if(!lname.match(regex)){
+		document.getElementById("p2").innerHTML="Only alphabets are allowed";
+		return false;
+	}
+	else{
+		document.getElementById("p2").style.display="none";
+		return true;
+	}
+	
+         
+} 
+
+function validateInput(){
+
+	var fname =document.forms["myForm"]["fname"].value;
+	var lname =document.forms["myForm"]["lname"].value;
+	var email =document.forms["myForm"]["email"].value;
+	var mobile=document.forms["myForm"]["mobile"].value;
+	var userid=document.forms["myForm"]["userid"].value;
+	var pass =document.forms["myForm"]["pass"].value;
+
+	
+ 
+	if(fname ==null||fname=="" ){
+		 document.getElementById("p1").innerHTML ="Required Field";
+		}
+	if(lname==null|| lname ==""){
+		document.getElementById("p2").innerHTML ="Required Field";
+         
+	}
+	if(email == null || email==""){
+		document.getElementById("p3").innerHTML ="Required Field";
+         
+	}
+	if(mobile==null || mobile==""){
+		document.getElementById("p4").innerHTML ="Required Field";
+         
+	}
+	if(userid==null || userid==""){
+		document.getElementById("p5").innerHTML ="Required Field";
+         
+	}
+	if(pass==null || pass==""){
+		document.getElementById("p6").innerHTML ="Required Field";
+         
+	}
+	
+			if(validateFname() || validateLname() || validateEmail() || validateMobile() ||validateUserid || validatePass()){
+		  			document.getElementById("output").innerHTML="Cannot submit form as some field is not correct";
+		  			return false;
+			} 
+			else{
+				document.getElementById("output").innerHTML="Everythings good";
+				return true;
+			}
+
+}
+
+
+</script>
+
+
+</html>
+
+</body>

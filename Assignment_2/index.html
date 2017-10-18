@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>
+        JavaScript Validations
+    </title>
+
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous"> -->
+</head>
+
+<body>
+    <div class="">
+        <form>
+            <label for="firstname">First Name</label>
+            <input id="firstname" type="text" pattern="[a-zA-Z]">
+            <span id="firstnamevm" style="font-style:italic; color:red"></span>
+            <br>
+            <br>
+            <label for="lastname">Last Name</label>
+            <input id="lastname" type="text">
+            <p id="lastnamevm"></p>
+            <br>
+            <br>
+            <label for="dateofbirth">Date Of Birth</label>
+            <input id="dateofbirth" type="date">
+            <br>
+            <br>
+            <label for="email">Email ID</label>
+            <input id="email" type="email">
+            <p id="emailvm"></p>
+            <br>
+            <br>
+            <label for="mobilenumber">Mobile Number</label>
+            <input id="mobilenumber" type="number">
+            <p id="mobilenumbervm"></p>
+            <br>
+            <br>
+            <label>Gender</label>
+            <input id="male" type="radio" name="gender" value="male">
+            <label for="male">Male</label>
+            <input id="famale" type="radio" name="gender" value="female">
+            <label for="female">Female</label>
+            <input id="other" type="radio" name="gender" value="other">
+            <label for="other">Other</label>
+            <br>
+            <br>
+            <label for="userid">User ID</label>
+            <input id="userid" type="text">
+            <p id="useridvm"></p>
+            <br>
+            <br>
+            <label for="password">Password</label>
+            <input id="password" type="password">
+            <p id="passwordvm"></p>
+            <br>
+            <br>
+            <button type="submit" onclick="myFunction()">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        function validateForm() {
+
+        }
+        function myFunction() {
+            var firstname = document.getElementById("firstname");
+            var lastname = document.getElementById("lastname");
+            var email = document.getElementById("email");
+            var mobilenumber = document.getElementById("mobilenumber");
+            var userid = document.getElementById("userid");
+            var password = document.getElementById("password");
+            
+            if (firstname.checkValidity() == false || firstname.value == "") {
+                document.getElementById("firstnamevm").innerHTML = "Only alphabets are allowed";
+            }
+        }
+    </script>
+</body>
+
+</html>
